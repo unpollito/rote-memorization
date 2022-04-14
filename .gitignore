@@ -1,4 +1,6 @@
 .env
+.env.local
+.env.production
 .idea
 node_modules/
 npm-debug.log

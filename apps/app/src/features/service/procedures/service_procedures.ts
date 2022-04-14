@@ -20,9 +20,7 @@ export const serviceApi = {
   },
 
   getFlashcards: async (): Promise<Flashcard[]> => {
-    const result = await axios.get(
-      process.env.REACT_APP_SERVER_ENDPOINT + PATH.flashcards.getFlashcards
-    );
+    const result = await axios.get(getUrl(PATH.flashcards.getFlashcards));
     return result.data; // TODO: validation, error handling
   },
 };
