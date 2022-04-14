@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@shortform-flashcards/db-client": "1.0.0",
+    "@shortform-flashcards/flashcard-common": "1.0.0",
     "@shortform-flashcards/types": "1.0.0",
     "cors": "2.8.5",
     "dotenv": "6.2.0",

@@ -21,6 +21,7 @@ CREATE TABLE public.flashcards (
     id uuid NOT NULL,
     user_id uuid NOT NULL,
     bin smallint DEFAULT 0 NOT NULL,
+    last_answer_at timestamp without time zone,
     num_failed_answers integer DEFAULT 0 NOT NULL,
     front_text character varying NOT NULL,
     back_text character varying NOT NULL

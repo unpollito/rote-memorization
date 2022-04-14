@@ -47,6 +47,12 @@ declare module 'zapatos/schema' {
       */
       bin: number;
       /**
+      * **flashcards.last_answer_at**
+      * - `timestamp` in database
+      * - Nullable, no default
+      */
+      last_answer_at: Date | null;
+      /**
       * **flashcards.num_failed_answers**
       * - `int4` in database
       * - `NOT NULL`, default: `0`
@@ -84,6 +90,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `0`
       */
       bin: number;
+      /**
+      * **flashcards.last_answer_at**
+      * - `timestamp` in database
+      * - Nullable, no default
+      */
+      last_answer_at: db.TimestampString | null;
       /**
       * **flashcards.num_failed_answers**
       * - `int4` in database
@@ -123,6 +135,12 @@ declare module 'zapatos/schema' {
       */
       bin?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
+      * **flashcards.last_answer_at**
+      * - `timestamp` in database
+      * - Nullable, no default
+      */
+      last_answer_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
+      /**
       * **flashcards.num_failed_answers**
       * - `int4` in database
       * - `NOT NULL`, default: `0`
@@ -161,6 +179,12 @@ declare module 'zapatos/schema' {
       */
       bin?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
+      * **flashcards.last_answer_at**
+      * - `timestamp` in database
+      * - Nullable, no default
+      */
+      last_answer_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment;
+      /**
       * **flashcards.num_failed_answers**
       * - `int4` in database
       * - `NOT NULL`, default: `0`
@@ -198,6 +222,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `0`
       */
       bin?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **flashcards.last_answer_at**
+      * - `timestamp` in database
+      * - Nullable, no default
+      */
+      last_answer_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **flashcards.num_failed_answers**
       * - `int4` in database

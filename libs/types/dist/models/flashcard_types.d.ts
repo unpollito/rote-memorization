@@ -2,6 +2,7 @@ export interface Flashcard {
     id: string;
     bin: number;
     numFailedAnswers: number;
+    lastAnswerAt?: string;
     frontText: string;
     backText: string;
 }

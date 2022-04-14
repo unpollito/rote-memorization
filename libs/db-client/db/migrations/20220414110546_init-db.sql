@@ -12,6 +12,7 @@ CREATE TABLE flashcards (
 	id uuid NULL,
 	user_id uuid NOT NULL,
 	bin int2 NOT NULL DEFAULT 0,
+	last_answer_at TIMESTAMP,
 	num_failed_answers int4 NOT NULL DEFAULT 0,
 	front_text varchar NOT NULL,
 	back_text varchar NOT NULL,

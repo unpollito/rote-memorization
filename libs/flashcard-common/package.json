@@ -1,0 +1,20 @@
+{
+  "name": "@shortform-flashcards/flashcard-common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "private": true,
+  "scripts": {
+    "i": "npx lerna bootstrap --scope @shortform-flashcards/flashcard-common",
+    "a": "npx lerna add --scope @shortform-flashcards/flashcard-common",
+    "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@shortform-flashcards/types": "1.0.0",
+    "luxon": "2.3.1"
+  },
+  "devDependencies": {
+    "typescript": "4.6.3",
+    "@types/luxon": "2.3.1"
+  }
+}

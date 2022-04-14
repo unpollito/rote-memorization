@@ -7,6 +7,7 @@ export const flashcardDbToFlashcard = (
   id: flashcardDb.id,
   userId: flashcardDb.user_id,
   bin: flashcardDb.bin,
+  lastAnswerAt: flashcardDb.last_answer_at ?? undefined,
   numFailedAnswers: flashcardDb.num_failed_answers,
   frontText: flashcardDb.front_text,
   backText: flashcardDb.back_text,

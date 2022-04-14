@@ -34,5 +34,26 @@ const getAllFlashcardsForUser = async (userId = db_constants_1.USER_ID) => {
         .run((0, db_pool_1.getDbPool)());
     return flashcards.map(flashcard_adapters_1.flashcardDbToFlashcard);
 };
-exports.flashcardApi = { getAllFlashcardsForUser };
+const getFlashcard = async (flashcardId) => {
+    const flashcard = await db
+        .selectOne("flashcards", { id: flashcardId })
+        .run((0, db_pool_1.getDbPool)());
+    return flashcard ? (0, flashcard_adapters_1.flashcardDbToFlashcard)(flashcard) : undefined;
+};
+const updateFlashcard = async (flashcard) => {
+    await db
+        .update("flashcards", {
+        bin: flashcard.bin,
+        last_answer_at: new Date().toISOString(),
+        num_failed_answers: flashcard.numFailedAnswers,
+    }, {
+        id: flashcard.id,
+    })
+        .run((0, db_pool_1.getDbPool)());
+};
+exports.flashcardApi = {
+    getAllFlashcardsForUser,
+    getFlashcard,
+    updateFlashcard,
+};
 //# sourceMappingURL=flashcard_api.js.map

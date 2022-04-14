@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@shortform-flashcards/flashcard-common": "1.0.0",
     "@shortform-flashcards/types": "1.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.0.1",
@@ -12,6 +13,7 @@
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.0",
     "@xstate/react": "3.0.0",
+    "axios": "0.26.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-router-dom": "6.3.0",
