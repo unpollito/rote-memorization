@@ -1,5 +1,5 @@
 {
-  "name": "unpollito-starter",
+  "name": "shortform-flashcards",
   "private": true,
   "scripts": {
     "lint": "yarn eslint . --ext .js,.jsx,.ts,.tsx,.json",

@@ -1,11 +1,11 @@
 {
-  "name": "@unpollito/types",
+  "name": "@shortform-flashcards/types",
   "version": "1.0.0",
   "main": "dist/index.js",
   "private": true,
   "scripts": {
-    "i": "npx lerna bootstrap --scope @unpollito/types",
-    "a": "lerna add --scope @unpollito/types",
+    "i": "npx lerna bootstrap --scope @shortform-flashcards/types",
+    "a": "lerna add --scope @shortform-flashcards/types",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "build": "tsc"
   },
