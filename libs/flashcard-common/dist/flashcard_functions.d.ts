@@ -5,4 +5,5 @@ export declare const getFlashcardAfterAnswer: ({ flashcard, isCorrect, }: {
     flashcard: Flashcard;
     isCorrect: boolean;
 }) => Flashcard;
+export declare const getSortedFlashcardsForReview: (flashcards: Flashcard[]) => Flashcard[];
 //# sourceMappingURL=flashcard_functions.d.ts.map

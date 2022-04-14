@@ -7,6 +7,8 @@ import {
 } from "./flashcard_common_constants";
 
 export const willFlashcardBeReviewable = (flashcard: Flashcard): boolean =>
+  // Sanity check: NO_REVIEW_BIN might be undefined (shouldn't as per the definition, but just in case).
+  // If that ever happens, assume that the flashcard can still be reviewed.
   (NO_REVIEW_BIN === undefined || flashcard.bin < NO_REVIEW_BIN) &&
   flashcard.numFailedAnswers < MAX_INCORRECT_ANSWERS;
 
@@ -14,15 +16,8 @@ export const isFlashcardReviewableNow = (flashcard: Flashcard): boolean => {
   if (!willFlashcardBeReviewable(flashcard)) {
     return false;
   }
-  if (!flashcard.lastAnswerAt) {
-    return true;
-  }
   const now = DateTime.now();
-  const reviewableFrom = DateTime.fromISO(flashcard.lastAnswerAt, {
-    zone: "UTC",
-  }).plus({
-    seconds: FLASHCARD_REVIEW_TIMES[flashcard.bin] ?? 0,
-  });
+  const reviewableFrom = getTimeForReview(flashcard);
   return reviewableFrom <= now;
 };
 
@@ -48,3 +43,16 @@ export const getFlashcardAfterAnswer = ({
     };
   }
 };
+
+export const getSortedFlashcardsForReview = (
+  flashcards: Flashcard[]
+): Flashcard[] => flashcards.sort((a, b) => (a.bin > b.bin ? -1 : 1));
+
+const getTimeForReview = (flashcard: Flashcard): DateTime =>
+  flashcard.lastAnswerAt
+    ? DateTime.fromISO(flashcard.lastAnswerAt, {
+        zone: "UTC",
+      }).plus({
+        seconds: FLASHCARD_REVIEW_TIMES[flashcard.bin] ?? 0,
+      })
+    : DateTime.fromISO("1970-01-01");

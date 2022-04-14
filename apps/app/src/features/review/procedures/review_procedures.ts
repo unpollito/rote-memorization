@@ -1,5 +1,6 @@
 import { serviceApi } from "../../service/procedures/service_procedures";
 import {
+  getSortedFlashcardsForReview,
   isFlashcardReviewableNow,
   willFlashcardBeReviewable,
 } from "@shortform-flashcards/flashcard-common";
@@ -13,6 +14,8 @@ export const getFlashcardDataForReviewSession = async (): Promise<FlashcardDataF
         .filter(willFlashcardBeReviewable)
         .map((flashcard) => flashcard.id)
     ),
-    flashcardsToReviewNow: allFlashcards.filter(isFlashcardReviewableNow),
+    flashcardsToReviewNow: getSortedFlashcardsForReview(
+      allFlashcards.filter(isFlashcardReviewableNow)
+    ),
   };
 };
