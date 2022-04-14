@@ -1,6 +1,6 @@
 {
   "db": {
-    "connectionString": "{{DB_LANG_TEST_URL}}"
+    "connectionString": "{{DATABASE_URL}}"
   },
   "outDir": "./src"
 }
