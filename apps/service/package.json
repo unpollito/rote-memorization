@@ -6,12 +6,14 @@
     "clean:build": "rm -rf dist",
     "clean:dependencies": "rm -rf node_modules",
     "i": "npx lerna bootstrap --scope @shortform-flashcards/service",
-    "a": "lerna add --scope @shortform-flashcards/service",
+    "a": "npx lerna add --scope @shortform-flashcards/service",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "build": "tsc",
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@shortform-flashcards/db-client": "1.0.0",
+    "@shortform-flashcards/types": "1.0.0",
     "cors": "2.8.5",
     "dotenv": "6.2.0",
     "express": "4.17.3"
