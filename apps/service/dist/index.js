@@ -5,10 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const express_1 = __importDefault(require("express"));
-const db_client_1 = require("@shortform-flashcards/db-client");
+const types_1 = require("@shortform-flashcards/types");
+const get_user_flashcards_controller_1 = require("./features/flashcards/controllers/get_user_flashcards_controller");
 const app = (0, express_1.default)();
-app.get("/", async function (_, res) {
-    res.send(JSON.stringify(await db_client_1.db.flashcard.getAllFlashcardsForUser()));
-});
+app.get(types_1.PATH.flashcards.getFlashcards, get_user_flashcards_controller_1.getUserFlashcardsController);
 app.listen(process.env.PORT);
 //# sourceMappingURL=index.js.map

@@ -1,11 +1,10 @@
 import "dotenv/config";
 import express from "express";
-import { db } from "@shortform-flashcards/db-client";
+import { PATH } from "@shortform-flashcards/types";
+import { getUserFlashcardsController } from "./features/flashcards/controllers/get_user_flashcards_controller";
 
 const app = express();
 
-app.get("/", async function (_, res) {
-  res.send(JSON.stringify(await db.flashcard.getAllFlashcardsForUser()));
-});
+app.get(PATH.flashcards.getFlashcards, getUserFlashcardsController);
 
 app.listen(process.env.PORT);

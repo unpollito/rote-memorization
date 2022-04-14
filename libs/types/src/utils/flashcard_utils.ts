@@ -1,4 +1,4 @@
-import { Flashcard, FlashcardWithUser } from "./flashcard_types";
+import { Flashcard, FlashcardWithUser } from "../models/flashcard_types";
 
 export const flashcardWithUserToFlashcard = (
   flashcard: FlashcardWithUser
