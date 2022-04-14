@@ -15,10 +15,10 @@ export const ReviewScreenFlashcardBackView = ({
   <div>
     <p>{flashcard.frontText}</p>
     <p>{flashcard.backText}</p>
-    <button onClick={onCorrectAnswer} disabled={!isAnswering}>
+    <button onClick={onCorrectAnswer} disabled={isAnswering}>
       I got it
     </button>
-    <button onClick={onIncorrectAnswer} disabled={!isAnswering}>
+    <button onClick={onIncorrectAnswer} disabled={isAnswering}>
       I did not get it
     </button>
   </div>

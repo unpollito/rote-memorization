@@ -37,7 +37,9 @@ export const reviewMachine = createMachine<
           src: "loadFlashcards",
           onDone: [
             {
-              cond: (context, event) => event.data.length > 0,
+              cond: (context, event) =>
+                (event.data as FlashcardDataForReviewSession)
+                  .flashcardsToReviewNow.length > 0,
               actions: ["assignFlashcardsAfterLoad"],
               target: "reviewingFront",
             },
@@ -96,30 +98,28 @@ export const reviewMachine = createMachine<
   },
   {
     actions: {
-      assignFlashcardsAfterLoad: (_, event) => {
-        // Not a fan of needing to do this, but XState's typing is not really well done.
+      assignFlashcardsAfterLoad: assign((_, event) => {
         const {
           flashcardIdsReviewableInTheFuture,
           flashcardsToReviewNow,
         } = (event as DoneInvokeEvent<FlashcardDataForReviewSession>).data;
-        return assign({
+        return {
           flashcardIdsReviewableInTheFuture,
           remainingFlashcards: flashcardsToReviewNow,
-        });
-      },
+        };
+      }),
 
       markFlashcardAsAnswered: assign({
         flashcardIdsReviewableInTheFuture: (context, event) => {
-          if (event.type !== "ANSWER") {
-            throw new Error("Wrong event type");
-          }
-          if (event.isCorrect) {
+          const isCorrect = (event as DoneInvokeEvent<{ isCorrect: boolean }>)
+            .data.isCorrect;
+          if (isCorrect) {
             return context.flashcardIdsReviewableInTheFuture;
           }
           const flashcard = context.remainingFlashcards[0];
           const answeredFlashcard = getFlashcardAfterAnswer({
             flashcard,
-            isCorrect: event.isCorrect,
+            isCorrect,
           });
           if (willFlashcardBeReviewable(answeredFlashcard)) {
             return context.flashcardIdsReviewableInTheFuture;
@@ -139,12 +139,14 @@ export const reviewMachine = createMachine<
       },
     },
     services: {
-      answerFlashcard: (context, event) => {
+      answerFlashcard: async (context, event) => {
         if (event.type === "ANSWER") {
-          return serviceApi.answerFlashcard({
+          const isCorrect = event.isCorrect;
+          await serviceApi.answerFlashcard({
             flashcard: context.remainingFlashcards[0],
-            isCorrect: event.isCorrect,
+            isCorrect,
           });
+          return { isCorrect };
         }
         throw new Error("Incorrect event type");
       },

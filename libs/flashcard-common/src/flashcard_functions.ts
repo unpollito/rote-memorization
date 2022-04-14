@@ -18,10 +18,12 @@ export const isFlashcardReviewableNow = (flashcard: Flashcard): boolean => {
     return true;
   }
   const now = DateTime.now();
-  const reviewableFrom = DateTime.fromISO(flashcard.lastAnswerAt).plus({
+  const reviewableFrom = DateTime.fromISO(flashcard.lastAnswerAt, {
+    zone: "UTC",
+  }).plus({
     seconds: FLASHCARD_REVIEW_TIMES[flashcard.bin] ?? 0,
   });
-  return reviewableFrom > now;
+  return reviewableFrom <= now;
 };
 
 export const getFlashcardAfterAnswer = ({

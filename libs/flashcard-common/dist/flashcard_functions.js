@@ -15,10 +15,12 @@ const isFlashcardReviewableNow = (flashcard) => {
         return true;
     }
     const now = luxon_1.DateTime.now();
-    const reviewableFrom = luxon_1.DateTime.fromISO(flashcard.lastAnswerAt).plus({
+    const reviewableFrom = luxon_1.DateTime.fromISO(flashcard.lastAnswerAt, {
+        zone: "UTC",
+    }).plus({
         seconds: (_a = flashcard_common_constants_1.FLASHCARD_REVIEW_TIMES[flashcard.bin]) !== null && _a !== void 0 ? _a : 0,
     });
-    return reviewableFrom > now;
+    return reviewableFrom <= now;
 };
 exports.isFlashcardReviewableNow = isFlashcardReviewableNow;
 const getFlashcardAfterAnswer = ({ flashcard, isCorrect, }) => {
