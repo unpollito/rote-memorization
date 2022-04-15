@@ -9,7 +9,7 @@
     "a": "npx lerna add --scope @shortform-flashcards/service",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "build": "tsc",
-    "build:production": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --external:pg-native",
+    "build:production": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --external:pg-native --external:express-winston --external:winston",
     "start": "node dist/index.js"
   },
   "dependencies": {
@@ -26,5 +26,6 @@
     "@types/node": "14.17.34",
     "esbuild": "0.14.36",
     "typescript": "4.6.3"
-  }
+  },
+  "engines": { "node" : "14.18.1" }
 }

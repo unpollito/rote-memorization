@@ -1,12 +1,12 @@
 {
   "name": "shortform-flashcards",
   "private": true,
+  "main": "apps/service/dist/index.js",
   "scripts": {
     "lint": "yarn eslint . --ext .js,.jsx,.ts,.tsx,.json",
     "setup": "yarn install && yarn i",
     "i": "lerna bootstrap",
-    "a": "lerna add",
-    "r": "lerna run --parallel r"
+    "a": "lerna add"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.33.0",
