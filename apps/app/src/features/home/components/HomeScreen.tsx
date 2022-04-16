@@ -6,11 +6,14 @@ import { logoutUser } from "../../user/procedures/user_procedures";
 
 export function HomeScreen(): React.ReactElement {
   return (
-    <header className="home_header">
+    <div>
       <h1>Flashcards</h1>
-      <p>
-        <Link to={APP_ROUTES.REVIEW}>Start review session</Link>
+      <div className={"links"}>
+        <Link className="links_link--review" to={APP_ROUTES.REVIEW}>
+          Start review session
+        </Link>
         <a
+          className="links_link--logout"
           href="#"
           onClick={(e) => {
             e.preventDefault();
@@ -19,7 +22,7 @@ export function HomeScreen(): React.ReactElement {
         >
           Logout
         </a>
-      </p>
-    </header>
+      </div>
+    </div>
   );
 }

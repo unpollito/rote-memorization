@@ -8,6 +8,7 @@ import { ReviewScreenFlashcardFrontView } from "./ReviewScreenFlashcardFrontView
 import { ReviewScreenFlashcardBackView } from "./ReviewScreenFlashcardBackView";
 import { ReviewScreenErrorView } from "./ReviewScreenErrorView";
 import { ReviewScreenCompleteView } from "./ReviewScreenCompleteView";
+import "./ReviewScreen.css";
 
 export const ReviewScreen = (): React.ReactElement => {
   const [state, send] = useMachine(reviewMachine);
@@ -48,7 +49,9 @@ export const ReviewScreen = (): React.ReactElement => {
       ) : undefined}
       {state.matches("error") ? <ReviewScreenErrorView /> : undefined}
       <p>
-        <Link to={APP_ROUTES.HOME}>Back</Link>
+        <Link className="link--back" to={APP_ROUTES.HOME}>
+          Back
+        </Link>
       </p>
     </div>
   );

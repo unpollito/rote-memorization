@@ -1,3 +1,4 @@
+import "./LoginScreen.css";
 import { useMachine } from "@xstate/react";
 import { loginScreenMachine } from "../machines/login_screen_machine";
 
@@ -13,8 +14,9 @@ export const LoginScreen = (): React.ReactElement => {
           this link to complete registration.
         </p>
       ) : (
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form className="login-form" onSubmit={(e) => e.preventDefault()}>
           <input
+            className="login-form_input"
             disabled={!state.matches("idle")}
             onChange={(e) => send({ email: e.target.value, type: "SET_EMAIL" })}
             placeholder="Email"
@@ -22,6 +24,7 @@ export const LoginScreen = (): React.ReactElement => {
             value={state.context.email}
           />
           <input
+            className="login-form_input"
             disabled={!state.matches("idle")}
             onChange={(e) =>
               send({ password: e.target.value, type: "SET_PASSWORD" })
@@ -31,24 +34,28 @@ export const LoginScreen = (): React.ReactElement => {
             value={state.context.password}
           />
           <button
+            className="login-form_button-login"
             disabled={!state.matches("idle")}
             onClick={() => send({ type: "LOGIN" })}
           >
             Log in
           </button>
           <button
+            className="login-form_button-register"
             disabled={!state.matches("idle")}
             onClick={() => send({ type: "REGISTER" })}
           >
             Register
           </button>
           {state.context.loginFailed ? (
-            <p>
+            <p className="error-message">
               Failed to log in - maybe you haven't validated your email address?
             </p>
           ) : undefined}
           {state.context.registrationFailed ? (
-            <p>Failed to register - maybe the account exists already?</p>
+            <p className="error-message">
+              Failed to register - maybe the account exists already?
+            </p>
           ) : undefined}
         </form>
       )}

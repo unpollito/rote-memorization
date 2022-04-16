@@ -1,10 +1,17 @@
-.home_header {
-    background-color: #282c34;
-    min-height: 100vh;
+.links {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+}
+
+.links_link--review, .links_link--logout {
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+.links_link--review {
+    color: #a2d9ce;
+}
+
+.links_link--logout {
+    color: #ccd1d1;
 }

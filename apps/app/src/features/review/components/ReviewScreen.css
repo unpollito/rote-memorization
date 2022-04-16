@@ -1,0 +1,36 @@
+.button--show-definition, .buttons_button--correct, .buttons_button--incorrect {
+    border: 0;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    width: 150px;
+}
+
+.button--show-definition:hover, .buttons_button--correct:hover, .buttons_button--incorrect:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.button--show-definition {
+    background-color: #85c1e9;
+}
+
+.buttons_button--correct {
+    background-color: #a2d9ce;
+}
+
+.buttons_button--incorrect {
+    background-color: #f5b7b1;
+}
+
+.buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.link--back {
+    color: #ccd1d1;
+    font-size: 0.6em;
+    text-decoration: none;
+}
