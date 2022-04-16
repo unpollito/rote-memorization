@@ -38,12 +38,25 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: user_validation_emails; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.user_validation_emails (
+    user_id uuid NOT NULL,
+    key character varying NOT NULL,
+    sent_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.users (
     id uuid NOT NULL,
-    email character varying NOT NULL
+    email character varying NOT NULL,
+    password character varying NOT NULL,
+    is_active boolean NOT NULL
 );
 
 
@@ -61,6 +74,22 @@ ALTER TABLE ONLY public.flashcards
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: user_validation_emails user_validation_emails_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_validation_emails
+    ADD CONSTRAINT user_validation_emails_pk PRIMARY KEY (user_id);
+
+
+--
+-- Name: user_validation_emails user_validation_emails_un; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_validation_emails
+    ADD CONSTRAINT user_validation_emails_un UNIQUE (key);
 
 
 --
@@ -88,6 +117,14 @@ ALTER TABLE ONLY public.flashcards
 
 
 --
+-- Name: user_validation_emails user_validation_emails_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_validation_emails
+    ADD CONSTRAINT user_validation_emails_fk FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -97,4 +134,5 @@ ALTER TABLE ONLY public.flashcards
 --
 
 INSERT INTO public.schema_migrations (version) VALUES
-    ('20220414110546');
+    ('20220414110546'),
+    ('20220415192942');

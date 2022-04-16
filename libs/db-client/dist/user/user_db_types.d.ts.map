@@ -1,0 +1,1 @@
+{"version":3,"file":"user_db_types.d.ts","sourceRoot":"","sources":["../../src/user/user_db_types.ts"],"names":[],"mappings":"AAAA,OAAO,CAAC,MAAM,gBAAgB,CAAC;AAE/B,oBAAY,MAAM,GAAG,CAAC,CAAC,KAAK,CAAC,cAAc,CAAC;AAE5C,oBAAY,qBAAqB,GAAG,CAAC,CAAC,sBAAsB,CAAC,cAAc,CAAC"}

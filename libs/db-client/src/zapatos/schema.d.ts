@@ -308,6 +308,119 @@ declare module 'zapatos/schema' {
   }
 
   /**
+   * **user_validation_emails**
+   * - Table in database
+   */
+  export namespace user_validation_emails {
+    export type Table = 'user_validation_emails';
+    export interface Selectable {
+      /**
+      * **user_validation_emails.user_id**
+      * - `uuid` in database
+      * - `NOT NULL`, no default
+      */
+      user_id: string;
+      /**
+      * **user_validation_emails.key**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      key: string;
+      /**
+      * **user_validation_emails.sent_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, no default
+      */
+      sent_at: Date;
+    }
+    export interface JSONSelectable {
+      /**
+      * **user_validation_emails.user_id**
+      * - `uuid` in database
+      * - `NOT NULL`, no default
+      */
+      user_id: string;
+      /**
+      * **user_validation_emails.key**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      key: string;
+      /**
+      * **user_validation_emails.sent_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, no default
+      */
+      sent_at: db.TimestampString;
+    }
+    export interface Whereable {
+      /**
+      * **user_validation_emails.user_id**
+      * - `uuid` in database
+      * - `NOT NULL`, no default
+      */
+      user_id?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **user_validation_emails.key**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      key?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **user_validation_emails.sent_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, no default
+      */
+      sent_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
+    }
+    export interface Insertable {
+      /**
+      * **user_validation_emails.user_id**
+      * - `uuid` in database
+      * - `NOT NULL`, no default
+      */
+      user_id: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **user_validation_emails.key**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      key: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **user_validation_emails.sent_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, no default
+      */
+      sent_at: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment;
+    }
+    export interface Updatable {
+      /**
+      * **user_validation_emails.user_id**
+      * - `uuid` in database
+      * - `NOT NULL`, no default
+      */
+      user_id?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **user_validation_emails.key**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      key?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **user_validation_emails.sent_at**
+      * - `timestamp` in database
+      * - `NOT NULL`, no default
+      */
+      sent_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment>;
+    }
+    export type UniqueIndex = 'user_validation_emails_pk';
+    export type Column = keyof Selectable;
+    export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
+    export type SQLExpression = db.GenericSQLExpression | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Table | Whereable | Column;
+    export type SQL = SQLExpression | SQLExpression[];
+  }
+
+  /**
    * **users**
    * - Table in database
    */
@@ -326,6 +439,18 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, no default
       */
       email: string;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      password: string;
+      /**
+      * **users.is_active**
+      * - `bool` in database
+      * - `NOT NULL`, no default
+      */
+      is_active: boolean;
     }
     export interface JSONSelectable {
       /**
@@ -340,6 +465,18 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, no default
       */
       email: string;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      password: string;
+      /**
+      * **users.is_active**
+      * - `bool` in database
+      * - `NOT NULL`, no default
+      */
+      is_active: boolean;
     }
     export interface Whereable {
       /**
@@ -354,6 +491,18 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, no default
       */
       email?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      password?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.is_active**
+      * - `bool` in database
+      * - `NOT NULL`, no default
+      */
+      is_active?: boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
       /**
@@ -368,6 +517,18 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, no default
       */
       email: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      password: string | db.Parameter<string> | db.SQLFragment;
+      /**
+      * **users.is_active**
+      * - `bool` in database
+      * - `NOT NULL`, no default
+      */
+      is_active: boolean | db.Parameter<boolean> | db.SQLFragment;
     }
     export interface Updatable {
       /**
@@ -382,6 +543,18 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, no default
       */
       email?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - `NOT NULL`, no default
+      */
+      password?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
+      * **users.is_active**
+      * - `bool` in database
+      * - `NOT NULL`, no default
+      */
+      is_active?: boolean | db.Parameter<boolean> | db.SQLFragment | db.SQLFragment<any, boolean | db.Parameter<boolean> | db.SQLFragment>;
     }
     export type UniqueIndex = 'users_pk' | 'users_unique_email';
     export type Column = keyof Selectable;
@@ -392,66 +565,74 @@ declare module 'zapatos/schema' {
 
   /* === cross-table types === */
 
-  export type Table = flashcards.Table | schema_migrations.Table | users.Table;
-  export type Selectable = flashcards.Selectable | schema_migrations.Selectable | users.Selectable;
-  export type JSONSelectable = flashcards.JSONSelectable | schema_migrations.JSONSelectable | users.JSONSelectable;
-  export type Whereable = flashcards.Whereable | schema_migrations.Whereable | users.Whereable;
-  export type Insertable = flashcards.Insertable | schema_migrations.Insertable | users.Insertable;
-  export type Updatable = flashcards.Updatable | schema_migrations.Updatable | users.Updatable;
-  export type UniqueIndex = flashcards.UniqueIndex | schema_migrations.UniqueIndex | users.UniqueIndex;
-  export type Column = flashcards.Column | schema_migrations.Column | users.Column;
-  export type AllBaseTables = [flashcards.Table, schema_migrations.Table, users.Table];
+  export type Table = flashcards.Table | schema_migrations.Table | user_validation_emails.Table | users.Table;
+  export type Selectable = flashcards.Selectable | schema_migrations.Selectable | user_validation_emails.Selectable | users.Selectable;
+  export type JSONSelectable = flashcards.JSONSelectable | schema_migrations.JSONSelectable | user_validation_emails.JSONSelectable | users.JSONSelectable;
+  export type Whereable = flashcards.Whereable | schema_migrations.Whereable | user_validation_emails.Whereable | users.Whereable;
+  export type Insertable = flashcards.Insertable | schema_migrations.Insertable | user_validation_emails.Insertable | users.Insertable;
+  export type Updatable = flashcards.Updatable | schema_migrations.Updatable | user_validation_emails.Updatable | users.Updatable;
+  export type UniqueIndex = flashcards.UniqueIndex | schema_migrations.UniqueIndex | user_validation_emails.UniqueIndex | users.UniqueIndex;
+  export type Column = flashcards.Column | schema_migrations.Column | user_validation_emails.Column | users.Column;
+  export type AllBaseTables = [flashcards.Table, schema_migrations.Table, user_validation_emails.Table, users.Table];
   export type AllForeignTables = [];
   export type AllViews = [];
   export type AllMaterializedViews = [];
-  export type AllTablesAndViews = [flashcards.Table, schema_migrations.Table, users.Table];
+  export type AllTablesAndViews = [flashcards.Table, schema_migrations.Table, user_validation_emails.Table, users.Table];
 
 
   export type SelectableForTable<T extends Table> = {
     flashcards: flashcards.Selectable;
     schema_migrations: schema_migrations.Selectable;
+    user_validation_emails: user_validation_emails.Selectable;
     users: users.Selectable;
   }[T];
 
   export type JSONSelectableForTable<T extends Table> = {
     flashcards: flashcards.JSONSelectable;
     schema_migrations: schema_migrations.JSONSelectable;
+    user_validation_emails: user_validation_emails.JSONSelectable;
     users: users.JSONSelectable;
   }[T];
 
   export type WhereableForTable<T extends Table> = {
     flashcards: flashcards.Whereable;
     schema_migrations: schema_migrations.Whereable;
+    user_validation_emails: user_validation_emails.Whereable;
     users: users.Whereable;
   }[T];
 
   export type InsertableForTable<T extends Table> = {
     flashcards: flashcards.Insertable;
     schema_migrations: schema_migrations.Insertable;
+    user_validation_emails: user_validation_emails.Insertable;
     users: users.Insertable;
   }[T];
 
   export type UpdatableForTable<T extends Table> = {
     flashcards: flashcards.Updatable;
     schema_migrations: schema_migrations.Updatable;
+    user_validation_emails: user_validation_emails.Updatable;
     users: users.Updatable;
   }[T];
 
   export type UniqueIndexForTable<T extends Table> = {
     flashcards: flashcards.UniqueIndex;
     schema_migrations: schema_migrations.UniqueIndex;
+    user_validation_emails: user_validation_emails.UniqueIndex;
     users: users.UniqueIndex;
   }[T];
 
   export type ColumnForTable<T extends Table> = {
     flashcards: flashcards.Column;
     schema_migrations: schema_migrations.Column;
+    user_validation_emails: user_validation_emails.Column;
     users: users.Column;
   }[T];
 
   export type SQLForTable<T extends Table> = {
     flashcards: flashcards.SQL;
     schema_migrations: schema_migrations.SQL;
+    user_validation_emails: user_validation_emails.SQL;
     users: users.SQL;
   }[T];
 

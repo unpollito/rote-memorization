@@ -1,8 +1,17 @@
 import { USER_ID } from "../constants/db_constants";
 import { Flashcard, FlashcardWithUser } from "@shortform-flashcards/types";
 import * as db from "zapatos/db";
-import { flashcardDbToFlashcard } from "./flashcard_adapters";
+import {
+  flashcardDbToFlashcardWithUser,
+  flashcardWithUserToFlashcardDb,
+} from "./flashcard_adapters";
 import { getDbPool } from "../db/db_pool";
+
+const createFlashcard = async (flashcard: FlashcardWithUser): Promise<void> => {
+  await db
+    .insert("flashcards", flashcardWithUserToFlashcardDb(flashcard))
+    .run(getDbPool());
+};
 
 const getAllFlashcardsForUser = async (
   userId = USER_ID
@@ -10,7 +19,7 @@ const getAllFlashcardsForUser = async (
   const flashcards = await db
     .select("flashcards", { user_id: userId })
     .run(getDbPool());
-  return flashcards.map(flashcardDbToFlashcard);
+  return flashcards.map(flashcardDbToFlashcardWithUser);
 };
 
 const getFlashcard = async (
@@ -19,7 +28,7 @@ const getFlashcard = async (
   const flashcard = await db
     .selectOne("flashcards", { id: flashcardId })
     .run(getDbPool());
-  return flashcard ? flashcardDbToFlashcard(flashcard) : undefined;
+  return flashcard ? flashcardDbToFlashcardWithUser(flashcard) : undefined;
 };
 
 const updateFlashcard = async (flashcard: Flashcard): Promise<void> => {
@@ -39,6 +48,7 @@ const updateFlashcard = async (flashcard: Flashcard): Promise<void> => {
 };
 
 export const flashcardApi = {
+  createFlashcard,
   getAllFlashcardsForUser,
   getFlashcard,
   updateFlashcard,

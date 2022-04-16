@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.flashcardDbToFlashcard = void 0;
-const flashcardDbToFlashcard = (flashcardDb) => {
+exports.flashcardWithUserToFlashcardDb = exports.flashcardDbToFlashcardWithUser = void 0;
+const flashcardDbToFlashcardWithUser = (flashcardDb) => {
     var _a;
     return ({
         id: flashcardDb.id,
@@ -13,5 +13,19 @@ const flashcardDbToFlashcard = (flashcardDb) => {
         backText: flashcardDb.back_text,
     });
 };
-exports.flashcardDbToFlashcard = flashcardDbToFlashcard;
+exports.flashcardDbToFlashcardWithUser = flashcardDbToFlashcardWithUser;
+const flashcardWithUserToFlashcardDb = (flashcard) => {
+    var _a;
+    return ({
+        back_text: flashcard.backText,
+        bin: flashcard.bin,
+        front_text: flashcard.frontText,
+        id: flashcard.id,
+        // TODO: validate this
+        last_answer_at: (_a = flashcard.lastAnswerAt) !== null && _a !== void 0 ? _a : null,
+        num_failed_answers: flashcard.numFailedAnswers,
+        user_id: flashcard.userId,
+    });
+};
+exports.flashcardWithUserToFlashcardDb = flashcardWithUserToFlashcardDb;
 //# sourceMappingURL=flashcard_adapters.js.map

@@ -28,17 +28,22 @@ const db_constants_1 = require("../constants/db_constants");
 const db = __importStar(require("zapatos/db"));
 const flashcard_adapters_1 = require("./flashcard_adapters");
 const db_pool_1 = require("../db/db_pool");
+const createFlashcard = async (flashcard) => {
+    await db
+        .insert("flashcards", (0, flashcard_adapters_1.flashcardWithUserToFlashcardDb)(flashcard))
+        .run((0, db_pool_1.getDbPool)());
+};
 const getAllFlashcardsForUser = async (userId = db_constants_1.USER_ID) => {
     const flashcards = await db
         .select("flashcards", { user_id: userId })
         .run((0, db_pool_1.getDbPool)());
-    return flashcards.map(flashcard_adapters_1.flashcardDbToFlashcard);
+    return flashcards.map(flashcard_adapters_1.flashcardDbToFlashcardWithUser);
 };
 const getFlashcard = async (flashcardId) => {
     const flashcard = await db
         .selectOne("flashcards", { id: flashcardId })
         .run((0, db_pool_1.getDbPool)());
-    return flashcard ? (0, flashcard_adapters_1.flashcardDbToFlashcard)(flashcard) : undefined;
+    return flashcard ? (0, flashcard_adapters_1.flashcardDbToFlashcardWithUser)(flashcard) : undefined;
 };
 const updateFlashcard = async (flashcard) => {
     await db
@@ -52,6 +57,7 @@ const updateFlashcard = async (flashcard) => {
         .run((0, db_pool_1.getDbPool)());
 };
 exports.flashcardApi = {
+    createFlashcard,
     getAllFlashcardsForUser,
     getFlashcard,
     updateFlashcard,

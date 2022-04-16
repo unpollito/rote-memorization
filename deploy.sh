@@ -1,6 +1,6 @@
 cd apps/app || exit
 rm -rf build/*
-cp .env.production .env
+cp env/.env.production .env
 yarn build
 aws s3 sync build s3://shortform-flashcards --acl public-read
 # Ensure index.html is not cached

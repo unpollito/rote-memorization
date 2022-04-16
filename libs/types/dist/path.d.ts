@@ -3,5 +3,10 @@ export declare const PATH: {
         answerFlashcard: string;
         getFlashcards: string;
     };
+    user: {
+        login: string;
+        register: string;
+        validate: string;
+    };
 };
 //# sourceMappingURL=path.d.ts.map
