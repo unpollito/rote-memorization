@@ -1,10 +1,10 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { db } from "@shortform-flashcards/db-client";
 import { getFlashcardAfterAnswer } from "@shortform-flashcards/flashcard-common";
-import { RequestWithJwt } from "../../../common/service_common_types";
+import { getUserFromRequest } from "../../../common/service_common_types";
 
 export const answerFlashcardsController = async (
-  req: RequestWithJwt,
+  req: Request,
   res: Response
 ): Promise<Response> => {
   const id = req.params.id;
@@ -13,7 +13,7 @@ export const answerFlashcardsController = async (
     return res.status(400).send("");
   }
   const flashcard = await db.flashcard.getFlashcard(id);
-  if (!flashcard || flashcard.userId !== req.user.id) {
+  if (!flashcard || flashcard.userId !== getUserFromRequest(req).id) {
     return res.status(404).send("");
   }
 
