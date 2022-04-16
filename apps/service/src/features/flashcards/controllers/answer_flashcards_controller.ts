@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { db } from "@shortform-flashcards/db-client";
 import { getFlashcardAfterAnswer } from "@shortform-flashcards/flashcard-common";
+import { RequestWithJwt } from "../../../common/service_common_types";
 
 export const answerFlashcardsController = async (
-  req: Request,
+  req: RequestWithJwt,
   res: Response
 ): Promise<Response> => {
   const id = req.params.id;
@@ -11,9 +12,8 @@ export const answerFlashcardsController = async (
   if (!id || typeof isCorrect !== "boolean") {
     return res.status(400).send("");
   }
-  // TODO: verify that the flashcard belongs to the current user
   const flashcard = await db.flashcard.getFlashcard(id);
-  if (!flashcard) {
+  if (!flashcard || flashcard.userId !== req.user.id) {
     return res.status(404).send("");
   }
 

@@ -1,4 +1,3 @@
-import { USER_ID } from "../constants/db_constants";
 import { Flashcard, FlashcardWithUser } from "@shortform-flashcards/types";
 import * as db from "zapatos/db";
 import {
@@ -14,7 +13,7 @@ const createFlashcard = async (flashcard: FlashcardWithUser): Promise<void> => {
 };
 
 const getAllFlashcardsForUser = async (
-  userId = USER_ID
+  userId: string
 ): Promise<FlashcardWithUser[]> => {
   const flashcards = await db
     .select("flashcards", { user_id: userId })
