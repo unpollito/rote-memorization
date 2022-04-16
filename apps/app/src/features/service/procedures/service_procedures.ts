@@ -23,6 +23,33 @@ export const serviceApi = {
     const result = await axios.get(getUrl(PATH.flashcards.getFlashcards));
     return result.data; // TODO: validation, error handling
   },
+
+  login: async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }): Promise<string> => {
+    const result = await axios.post(getUrl(PATH.user.login), {
+      email,
+      password,
+    });
+    return result.data;
+  },
+
+  register: async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }): Promise<void> => {
+    await axios.post(getUrl(PATH.user.register), {
+      email,
+      password,
+    });
+  },
 };
 
 const getUrl = (endpoint: string): string =>
