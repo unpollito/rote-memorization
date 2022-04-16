@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import { db } from "@shortform-flashcards/db-client";
 import { generateJwt } from "../procedures/user_login_procedures";

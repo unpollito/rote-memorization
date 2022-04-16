@@ -1,6 +1,6 @@
 import { UserWithPassword } from "@shortform-flashcards/types";
 import { v4 as uuidv4 } from "uuid";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { db } from "@shortform-flashcards/db-client";
 import { sendEmail } from "../../email/procedures/email_procedures";
