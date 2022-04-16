@@ -3,7 +3,7 @@ import { UserAction, UserState } from "./user_store_types";
 
 const initialState: UserState = {};
 
-const setUser = (
+const userReducer = (
   state: UserState = initialState,
   action: UserAction
 ): UserState => {
@@ -17,4 +17,6 @@ const setUser = (
   }
 };
 
-export const store = createStore(setUser);
+export const store = createStore(userReducer);
+
+console.log(store);

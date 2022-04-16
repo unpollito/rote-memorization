@@ -22,6 +22,7 @@ export const validateUserController = async (
       isActive: true,
     };
     await db.user.updateUser(updatedUser);
+    await db.user.deleteUserValidationEmailData(updatedUser.id);
 
     return res.status(200).send(generateJwt(updatedUser));
   } catch (e) {
