@@ -1,4 +1,4 @@
-import { UserValidationEmailData, UserWithPassword } from "@shortform-flashcards/types";
+import { User, UserValidationEmailData, UserValidationEmailDataWithUserWithPassword, UserWithPassword } from "@shortform-flashcards/types";
 export declare const userApi: {
     createUser: (user: UserWithPassword) => Promise<void>;
     createUserValidationEmailData: ({ emailData, userId, }: {
@@ -7,6 +7,8 @@ export declare const userApi: {
     }) => Promise<void>;
     deleteUserValidationEmailData: (userId: string) => Promise<void>;
     getUserByEmail: (email: string) => Promise<UserWithPassword | undefined>;
-    getUserValidationEmailDataByKey: (key: string) => Promise<UserValidationEmailData | undefined>;
+    getUserById: (id: string) => Promise<UserWithPassword | undefined>;
+    getUserValidationEmailDataByKey: (key: string) => Promise<UserValidationEmailDataWithUserWithPassword | undefined>;
+    updateUser: (user: User) => Promise<void>;
 };
 //# sourceMappingURL=user_api.d.ts.map

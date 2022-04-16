@@ -1,17 +1,19 @@
 import {
+  User,
   UserValidationEmailData,
+  UserValidationEmailDataWithUserWithPassword,
   UserWithPassword,
 } from "@shortform-flashcards/types";
 import * as db from "zapatos/db";
 import { getDbPool } from "../db/db_pool";
 import {
-  userDbToUser,
-  userToUserDb,
+  userDbToUserWithPassword,
   userValidationDbToUserValidationEmailData,
+  userWithPasswordToUserDb,
 } from "./user_adapters";
 
 const createUser = async (user: UserWithPassword): Promise<void> => {
-  await db.insert("users", userToUserDb(user)).run(getDbPool());
+  await db.insert("users", userWithPasswordToUserDb(user)).run(getDbPool());
 };
 
 const createUserValidationEmailData = async ({
@@ -43,18 +45,48 @@ const getUserByEmail = async (
   email: string
 ): Promise<UserWithPassword | undefined> => {
   const user = await db.selectOne("users", { email }).run(getDbPool());
-  return user ? userDbToUser(user) : undefined;
+  return user ? userDbToUserWithPassword(user) : undefined;
+};
+
+const getUserById = async (
+  id: string
+): Promise<UserWithPassword | undefined> => {
+  const user = await db.selectOne("users", { id }).run(getDbPool());
+  return user ? userDbToUserWithPassword(user) : undefined;
 };
 
 const getUserValidationEmailDataByKey = async (
   key: string
-): Promise<UserValidationEmailData | undefined> => {
+): Promise<UserValidationEmailDataWithUserWithPassword | undefined> => {
   const emailData = await db
-    .selectOne("user_validation_emails", { key })
+    .selectOne(
+      "user_validation_emails",
+      { key },
+      {
+        lateral: {
+          user: db.selectOne("users", {
+            id: db.parent("user_id"),
+          }),
+        },
+      }
+    )
     .run(getDbPool());
-  return emailData
-    ? userValidationDbToUserValidationEmailData(emailData)
+  return emailData && emailData.user
+    ? {
+        ...userValidationDbToUserValidationEmailData(emailData),
+        user: userDbToUserWithPassword(emailData.user),
+      }
     : undefined;
+};
+
+const updateUser = async (user: User): Promise<void> => {
+  await db
+    .update(
+      "users",
+      { email: user.email, is_active: user.isActive },
+      { id: user.id }
+    )
+    .run(getDbPool());
 };
 
 export const userApi = {
@@ -62,5 +94,7 @@ export const userApi = {
   createUserValidationEmailData,
   deleteUserValidationEmailData,
   getUserByEmail,
+  getUserById,
   getUserValidationEmailDataByKey,
+  updateUser,
 };

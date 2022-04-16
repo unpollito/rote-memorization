@@ -28,7 +28,7 @@ const db = __importStar(require("zapatos/db"));
 const db_pool_1 = require("../db/db_pool");
 const user_adapters_1 = require("./user_adapters");
 const createUser = async (user) => {
-    await db.insert("users", (0, user_adapters_1.userToUserDb)(user)).run((0, db_pool_1.getDbPool)());
+    await db.insert("users", (0, user_adapters_1.userWithPasswordToUserDb)(user)).run((0, db_pool_1.getDbPool)());
 };
 const createUserValidationEmailData = async ({ emailData, userId, }) => {
     await db
@@ -49,21 +49,41 @@ const deleteUserValidationEmailData = async (userId) => {
 };
 const getUserByEmail = async (email) => {
     const user = await db.selectOne("users", { email }).run((0, db_pool_1.getDbPool)());
-    return user ? (0, user_adapters_1.userDbToUser)(user) : undefined;
+    return user ? (0, user_adapters_1.userDbToUserWithPassword)(user) : undefined;
+};
+const getUserById = async (id) => {
+    const user = await db.selectOne("users", { id }).run((0, db_pool_1.getDbPool)());
+    return user ? (0, user_adapters_1.userDbToUserWithPassword)(user) : undefined;
 };
 const getUserValidationEmailDataByKey = async (key) => {
     const emailData = await db
-        .selectOne("user_validation_emails", { key })
+        .selectOne("user_validation_emails", { key }, {
+        lateral: {
+            user: db.selectOne("users", {
+                id: db.parent("user_id"),
+            }),
+        },
+    })
         .run((0, db_pool_1.getDbPool)());
-    return emailData
-        ? (0, user_adapters_1.userValidationDbToUserValidationEmailData)(emailData)
+    return emailData && emailData.user
+        ? {
+            ...(0, user_adapters_1.userValidationDbToUserValidationEmailData)(emailData),
+            user: (0, user_adapters_1.userDbToUserWithPassword)(emailData.user),
+        }
         : undefined;
+};
+const updateUser = async (user) => {
+    await db
+        .update("users", { email: user.email, is_active: user.isActive }, { id: user.id })
+        .run((0, db_pool_1.getDbPool)());
 };
 exports.userApi = {
     createUser,
     createUserValidationEmailData,
     deleteUserValidationEmailData,
     getUserByEmail,
+    getUserById,
     getUserValidationEmailDataByKey,
+    updateUser,
 };
 //# sourceMappingURL=user_api.js.map

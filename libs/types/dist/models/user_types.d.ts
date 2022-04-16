@@ -10,4 +10,7 @@ export interface UserValidationEmailData {
     key: string;
     sentAt: string;
 }
+export interface UserValidationEmailDataWithUserWithPassword extends UserValidationEmailData {
+    user: UserWithPassword;
+}
 //# sourceMappingURL=user_types.d.ts.map

@@ -1,20 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userValidationDbToUserValidationEmailData = exports.userToUserDb = exports.userDbToUser = void 0;
-const userDbToUser = (userDb) => ({
+exports.userValidationDbToUserValidationEmailData = exports.userWithPasswordToUserDb = exports.userDbToUserWithPassword = void 0;
+const userDbToUserWithPassword = (userDb) => ({
     email: userDb.email,
     id: userDb.id,
     isActive: userDb.is_active,
     password: userDb.password,
 });
-exports.userDbToUser = userDbToUser;
-const userToUserDb = (user) => ({
+exports.userDbToUserWithPassword = userDbToUserWithPassword;
+const userWithPasswordToUserDb = (user) => ({
     email: user.email,
     id: user.id,
     is_active: user.isActive,
     password: user.password,
 });
-exports.userToUserDb = userToUserDb;
+exports.userWithPasswordToUserDb = userWithPasswordToUserDb;
 const userValidationDbToUserValidationEmailData = (emailData) => ({
     key: emailData.key,
     sentAt: emailData.sent_at,
