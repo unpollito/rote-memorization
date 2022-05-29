@@ -21,7 +21,7 @@ export const ValidateScreen = (): React.ReactElement => {
     } else {
       navigation("/");
     }
-  }, []);
+  }, [key, navigation]);
 
   return hasValidationError ? (
     <div>

@@ -1,11 +1,17 @@
 # rote-memorization
 
+![Sample review flow](sample.gif)
+
 This is a sample full-stack application where the user can sign up, verify
-their email address, and then 
+their email address, and then review vocabulary flashcards where
+German words are mapped to their translations.
 
-## Installation
+## Running locally
 
-1. Ensure that you have `node`, `npm` and `yarn` globally installed.
+1. Ensure that you have `node`, `npm`, `yarn` and `dbmate` globally installed
+    1. `node` and `npm`: https://nodejs.org/en/
+    2. `yarn`: `npm install -g yarn` (may require `sudo`)
+    3. `dbmate`: https://github.com/amacneil/dbmate
 2. Run `yarn setup`.
 3. Set up the env variables `.env` in `apps/app/.env`, `apps/service/.env`
    and `libs/db-client/.env` with the correct values using the `.env.sample`
