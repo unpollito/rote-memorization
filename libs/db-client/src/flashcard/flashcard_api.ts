@@ -1,4 +1,4 @@
-import { Flashcard, FlashcardWithUser } from "@shortform-flashcards/types";
+import { Flashcard, FlashcardWithUser } from "@rote-memorization/types";
 import * as db from "zapatos/db";
 import {
   flashcardDbToFlashcardWithUser,

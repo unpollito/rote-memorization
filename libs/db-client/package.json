@@ -1,16 +1,16 @@
 {
-  "name": "@shortform-flashcards/db-client",
+  "name": "@rote-memorization/db-client",
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
   "scripts": {
-    "i": "npx lerna bootstrap --scope @shortform-flashcards/db-client",
-    "a": "npx lerna add --scope @shortform-flashcards/db-client",
+    "i": "npx lerna bootstrap --scope @rote-memorization/db-client",
+    "a": "npx lerna add --scope @rote-memorization/db-client",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "build": "tsc"
   },
   "dependencies": {
-    "@shortform-flashcards/types": "1.0.0",
+    "@rote-memorization/types": "1.0.0",
     "pg": "8.5.1",
     "zapatos": "5.0.0"
   },

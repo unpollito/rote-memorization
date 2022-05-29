@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Flashcard, PATH } from "@shortform-flashcards/types";
+import { Flashcard, PATH } from "@rote-memorization/types";
 import { selectUserJwt } from "../../user/redux/user_selectors";
 import { store } from "../../user/redux/user_store";
 

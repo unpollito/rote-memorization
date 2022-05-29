@@ -1,4 +1,4 @@
-import { User } from "@shortform-flashcards/types";
+import { User } from "@rote-memorization/types";
 import { store } from "../redux/user_store";
 import { serviceApi } from "../../service/procedures/service_procedures";
 

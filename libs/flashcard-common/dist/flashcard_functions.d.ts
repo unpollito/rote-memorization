@@ -1,4 +1,4 @@
-import { Flashcard } from "@shortform-flashcards/types";
+import { Flashcard } from "@rote-memorization/types";
 export declare const willFlashcardBeReviewable: (flashcard: Flashcard) => boolean;
 export declare const isFlashcardReviewableNow: (flashcard: Flashcard) => boolean;
 export declare const getFlashcardAfterAnswer: ({ flashcard, isCorrect, }: {

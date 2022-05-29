@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { db } from "@shortform-flashcards/db-client";
+import { db } from "@rote-memorization/db-client";
 import {
   createUser,
   sendValidationEmailToUser,

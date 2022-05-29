@@ -1,4 +1,4 @@
-import { Flashcard } from "@shortform-flashcards/types";
+import { Flashcard } from "@rote-memorization/types";
 import { DateTime } from "luxon";
 import {
   FLASHCARD_REVIEW_TIMES,

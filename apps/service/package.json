@@ -1,21 +1,21 @@
 {
-  "name": "@shortform-flashcards/service",
+  "name": "@rote-memorization/service",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
     "clean:build": "rm -rf dist",
     "clean:dependencies": "rm -rf node_modules",
-    "i": "npx lerna bootstrap --scope @shortform-flashcards/service",
-    "a": "npx lerna add --scope @shortform-flashcards/service",
+    "i": "npx lerna bootstrap --scope @rote-memorization/service",
+    "a": "npx lerna add --scope @rote-memorization/service",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "build": "tsc",
     "build:production": "esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --external:pg-native --external:express-winston --external:winston",
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@shortform-flashcards/db-client": "1.0.0",
-    "@shortform-flashcards/flashcard-common": "1.0.0",
-    "@shortform-flashcards/types": "1.0.0",
+    "@rote-memorization/db-client": "1.0.0",
+    "@rote-memorization/flashcard-common": "1.0.0",
+    "@rote-memorization/types": "1.0.0",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
     "dotenv": "6.2.0",

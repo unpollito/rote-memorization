@@ -3,7 +3,7 @@ import {
   getSortedFlashcardsForReview,
   isFlashcardReviewableNow,
   willFlashcardBeReviewable,
-} from "@shortform-flashcards/flashcard-common";
+} from "@rote-memorization/flashcard-common";
 import { FlashcardDataForReviewSession } from "../types/review_types";
 
 export const getFlashcardDataForReviewSession = async (): Promise<FlashcardDataForReviewSession> => {

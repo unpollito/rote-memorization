@@ -1,5 +1,5 @@
 import React from "react";
-import { Flashcard } from "@shortform-flashcards/types";
+import { Flashcard } from "@rote-memorization/types";
 
 export const ReviewScreenFlashcardBackView = ({
   flashcard,

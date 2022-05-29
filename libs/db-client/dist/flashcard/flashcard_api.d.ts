@@ -1,4 +1,4 @@
-import { Flashcard, FlashcardWithUser } from "@shortform-flashcards/types";
+import { Flashcard, FlashcardWithUser } from "@rote-memorization/types";
 export declare const flashcardApi: {
     createFlashcard: (flashcard: FlashcardWithUser) => Promise<void>;
     getAllFlashcardsForUser: (userId?: string) => Promise<FlashcardWithUser[]>;

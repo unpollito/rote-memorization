@@ -1,4 +1,4 @@
-import { User } from "@shortform-flashcards/types";
+import { User } from "@rote-memorization/types";
 
 export interface LoginAction {
   jwt: string;

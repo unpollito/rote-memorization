@@ -2,7 +2,7 @@ import { UserDb, UserValidationEmailDb } from "./user_db_types";
 import {
   UserValidationEmailData,
   UserWithPassword,
-} from "@shortform-flashcards/types";
+} from "@rote-memorization/types";
 
 export const userDbToUserWithPassword = (userDb: UserDb): UserWithPassword => ({
   email: userDb.email,

@@ -1,11 +1,11 @@
 branch-defaults:
   default:
-    environment: Shortformflashcards-env
+    environment: Rotememorization-env
     group_suffix: null
   main:
-    environment: Shortformflashcards-env
+    environment: Rotememorization-env
 global:
-  application_name: shortform-flashcards
+  application_name: rote-memorization
   branch: null
   default_ec2_keyname: null
   default_platform: Node.js

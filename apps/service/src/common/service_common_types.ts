@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { User } from "@shortform-flashcards/types";
+import { User } from "@rote-memorization/types";
 
 export const getUserFromRequest = (request: Request): User => {
   if (!request.user || !(request.user as User).id) {

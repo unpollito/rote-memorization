@@ -1,10 +1,10 @@
 {
-  "name": "@shortform-flashcards/app",
+  "name": "@rote-memorization/app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@shortform-flashcards/flashcard-common": "1.0.0",
-    "@shortform-flashcards/types": "1.0.0",
+    "@rote-memorization/flashcard-common": "1.0.0",
+    "@rote-memorization/types": "1.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.0.1",
     "@testing-library/user-event": "13.5.0",
@@ -27,8 +27,8 @@
   },
   "scripts": {
     "clean:dependencies": "rm -rf node_modules",
-    "i": "npx lerna bootstrap --scope @shortform-flashcards/app",
-    "a": "npx lerna add --scope @shortform-flashcards/app",
+    "i": "npx lerna bootstrap --scope @rote-memorization/app",
+    "a": "npx lerna add --scope @rote-memorization/app",
     "r": "yarn remove $DEP 1>/dev/null 2>&1 || yarn clean:dependencies && yarn i",
     "start": "react-scripts start",
     "build": "react-scripts build",

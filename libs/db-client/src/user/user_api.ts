@@ -3,7 +3,7 @@ import {
   UserValidationEmailData,
   UserValidationEmailDataWithUserWithPassword,
   UserWithPassword,
-} from "@shortform-flashcards/types";
+} from "@rote-memorization/types";
 import * as db from "zapatos/db";
 import { getDbPool } from "../db/db_pool";
 import {

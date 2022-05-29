@@ -1,4 +1,4 @@
-import { Flashcard } from "@shortform-flashcards/types";
+import { Flashcard } from "@rote-memorization/types";
 
 export interface ReviewMachineContext {
   flashcardIdsReviewableInTheFuture: Set<string>;

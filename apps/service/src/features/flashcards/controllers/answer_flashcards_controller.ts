@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { db } from "@shortform-flashcards/db-client";
-import { getFlashcardAfterAnswer } from "@shortform-flashcards/flashcard-common";
+import { db } from "@rote-memorization/db-client";
+import { getFlashcardAfterAnswer } from "@rote-memorization/flashcard-common";
 import { getUserFromRequest } from "../../../common/service_common_types";
 
 export const answerFlashcardsController = async (

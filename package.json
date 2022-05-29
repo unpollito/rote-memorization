@@ -1,5 +1,5 @@
 {
-  "name": "shortform-flashcards",
+  "name": "rote-memorization",
   "private": true,
   "main": "apps/service/dist/index.js",
   "scripts": {

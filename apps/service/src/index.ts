@@ -1,7 +1,7 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { PATH } from "@shortform-flashcards/types";
+import { PATH } from "@rote-memorization/types";
 import { getUserFlashcardsController } from "./features/flashcards/controllers/get_user_flashcards_controller";
 import { answerFlashcardsController } from "./features/flashcards/controllers/answer_flashcards_controller";
 import { registerUserController } from "./features/user/controllers/register_user_controller";

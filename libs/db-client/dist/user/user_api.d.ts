@@ -1,4 +1,4 @@
-import { User, UserValidationEmailData, UserValidationEmailDataWithUserWithPassword, UserWithPassword } from "@shortform-flashcards/types";
+import { User, UserValidationEmailData, UserValidationEmailDataWithUserWithPassword, UserWithPassword } from "@rote-memorization/types";
 export declare const userApi: {
     createUser: (user: UserWithPassword) => Promise<void>;
     createUserValidationEmailData: ({ emailData, userId, }: {

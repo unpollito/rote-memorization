@@ -1,10 +1,11 @@
+## TODO: rename bucket names
 cd apps/app || exit
 rm -rf build/*
 cp env/.env.production .env
 yarn build
-aws s3 sync build s3://shortform-flashcards --acl public-read
+aws s3 sync build s3://rote-memorization --acl public-read
 # Ensure index.html is not cached
-aws s3 cp build/index.html s3://shortform-flashcards/index.html --cache-control no-cache --acl public-read
+aws s3 cp build/index.html s3://rote-memorization/index.html --cache-control no-cache --acl public-read
 
 cd ../service || exit
 rm -rf dist/*
@@ -18,11 +19,11 @@ mkdir -p libs
 cp -r ../../libs/db-client libs/db-client
 cp -r ../../libs/flashcard-common libs/flashcard-common
 cp -r ../../libs/types libs/types
-sed -i 's|"@shortform-flashcards/db-client": "1.0.0"|"@shortform-flashcards/db-client": "file:./libs/db-client"|g' package.json
-sed -i 's|"@shortform-flashcards/flashcard-common": "1.0.0"|"@shortform-flashcards/flashcard-common": "file:./libs/flashcard-common"|g' package.json
-sed -i 's|"@shortform-flashcards/types": "1.0.0"|"@shortform-flashcards/types": "file:./libs/types"|g' package.json
-sed -i 's|"@shortform-flashcards/types": "1.0.0"|"@shortform-flashcards/types": "file:../types"|g' libs/db-client/package.json
-sed -i 's|"@shortform-flashcards/types": "1.0.0"|"@shortform-flashcards/types": "file:../types"|g' libs/flashcard-common/package.json
+sed -i 's|"@rote-memorization/db-client": "1.0.0"|"@rote-memorization/db-client": "file:./libs/db-client"|g' package.json
+sed -i 's|"@rote-memorization/flashcard-common": "1.0.0"|"@rote-memorization/flashcard-common": "file:./libs/flashcard-common"|g' package.json
+sed -i 's|"@rote-memorization/types": "1.0.0"|"@rote-memorization/types": "file:./libs/types"|g' package.json
+sed -i 's|"@rote-memorization/types": "1.0.0"|"@rote-memorization/types": "file:../types"|g' libs/db-client/package.json
+sed -i 's|"@rote-memorization/types": "1.0.0"|"@rote-memorization/types": "file:../types"|g' libs/flashcard-common/package.json
 rm -rf node_modules
 npm install
 yarn build:production

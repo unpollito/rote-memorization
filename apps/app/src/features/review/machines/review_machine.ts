@@ -10,7 +10,7 @@ import { FlashcardDataForReviewSession } from "../types/review_types";
 import {
   getFlashcardAfterAnswer,
   willFlashcardBeReviewable,
-} from "@shortform-flashcards/flashcard-common";
+} from "@rote-memorization/flashcard-common";
 
 export const reviewMachine = createMachine<
   ReviewMachineContext,

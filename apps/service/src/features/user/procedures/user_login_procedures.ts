@@ -1,4 +1,4 @@
-import { User } from "@shortform-flashcards/types";
+import { User } from "@rote-memorization/types";
 import jwt from "jsonwebtoken";
 
 export const generateJwt = (user: User): string => {

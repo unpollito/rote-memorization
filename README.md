@@ -1,4 +1,7 @@
-# shortform-flashcards
+# rote-memorization
+
+This is a sample full-stack application where the user can sign up, verify
+their email address, and then 
 
 ## Installation
 
@@ -106,12 +109,10 @@ This package holds type definitions which are potentially reusable between the o
 packages, including the app and the service, so that every package has the most
 up-to-date version of the types without duplication.
 
-## Production
+## Deployments
 
-The client app lives in a S3 bucket publicly available in
-http://shortform-flashcards.s3-website-us-east-1.amazonaws.com/. Meanwhile, the
-backend lives in an Elastic Beanstalk instance in
-http://shortformflashcards-env.eba-yeermfpd.us-east-1.elasticbeanstalk.com/.
+The client app is meant to be living in an S3 bucket, whereas the backend
+should be deployed to an Elastic Beanstalk instance.
 
 I have written a `deploy.sh` script that takes care of setting up the correct env
 files for each (assuming that there are `.env.production` files) readily available,

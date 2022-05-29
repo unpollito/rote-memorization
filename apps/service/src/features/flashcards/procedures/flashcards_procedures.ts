@@ -2,9 +2,9 @@ import {
   Flashcard,
   FlashcardWithUser,
   User,
-} from "@shortform-flashcards/types";
+} from "@rote-memorization/types";
 import { v4 as uuidv4 } from "uuid";
-import { db } from "@shortform-flashcards/db-client";
+import { db } from "@rote-memorization/db-client";
 
 export const populateUserFlashcards = async (user: User): Promise<void> => {
   const flashcards = pickRandomItems({ arr: FLASHCARD_DEFINITIONS, n: 5 }).map(

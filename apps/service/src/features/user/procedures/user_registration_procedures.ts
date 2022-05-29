@@ -1,8 +1,8 @@
-import { UserWithPassword } from "@shortform-flashcards/types";
+import { UserWithPassword } from "@rote-memorization/types";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import { db } from "@shortform-flashcards/db-client";
+import { db } from "@rote-memorization/db-client";
 import { sendEmail } from "../../email/procedures/email_procedures";
 
 export const createUser = async ({

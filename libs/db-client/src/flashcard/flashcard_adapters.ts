@@ -1,5 +1,5 @@
 import { FlashcardDb } from "./flashcard_db_types";
-import { FlashcardWithUser } from "@shortform-flashcards/types";
+import { FlashcardWithUser } from "@rote-memorization/types";
 import * as db from "zapatos/db";
 
 export const flashcardDbToFlashcardWithUser = (
