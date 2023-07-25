@@ -1,11 +1,10 @@
-## TODO: rename bucket names
 cd apps/app || exit
 rm -rf build/*
-cp env/.env.production .env
+cp .env.production .env
 yarn build
-aws s3 sync build s3://rote-memorization --acl public-read
+aws s3 sync build s3://rotememorization --acl public-read
 # Ensure index.html is not cached
-aws s3 cp build/index.html s3://rote-memorization/index.html --cache-control no-cache --acl public-read
+aws s3 cp build/index.html s3://rotememorization/index.html --cache-control no-cache --acl public-read
 
 cd ../service || exit
 rm -rf dist/*

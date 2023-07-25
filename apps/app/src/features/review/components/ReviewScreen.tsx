@@ -18,9 +18,15 @@ export const ReviewScreen = (): React.ReactElement => {
   }, [send]);
 
   const currentFlashcard = state.context.remainingFlashcards[0];
+  const shouldUseFixedHeight =
+    state.matches("reviewingFront") || state.matches("reviewingBack");
 
   return (
-    <div>
+    <div
+      className={
+        shouldUseFixedHeight ? "review-wrapper--fixed-height" : undefined
+      }
+    >
       <h2>Review session</h2>
       {state.matches("idle") || state.matches("loading") ? (
         <ReviewScreenLoadingView />

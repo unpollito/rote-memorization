@@ -8,11 +8,21 @@ import { registerUserController } from "./features/user/controllers/register_use
 import { loginUserController } from "./features/user/controllers/login_user_controller";
 import { validateUserController } from "./features/user/controllers/validate_user_controller";
 import jwt from "express-jwt";
+import * as process from "process";
 
 const app = express();
 
+if (!process.env.WEBSITE_URL) {
+  throw new Error("Missing required env variable: WEBSITE_URL");
+}
+
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.WEBSITE_URL],
+    credentials: true,
+  })
+);
 
 app.post(PATH.user.login, loginUserController);
 app.post(PATH.user.register, registerUserController);

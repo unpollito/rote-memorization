@@ -106,7 +106,7 @@ was mentioned before, I think that in general it's a good idea to have this code
 separately. There were no hard requirements about whether this logic should live in
 the backend or the server (e.g., maybe we could have the backend only send the
 frontend the list of flashcards it needs for the current review session). Having it
-in a separate package gives us more flexibility to move it from one package to
+in a separate package gives us more flexibility to move it from one place to
 another with minimal effort.
 
 ### types
@@ -124,6 +124,6 @@ I have written a `deploy.sh` script that takes care of setting up the correct en
 files for each (assuming that there are `.env.production` files) readily available,
 builds the app and the backend, uploads the app to S3 and deploys the portal to EB.
 
-Note that deploying the backend requires some extra setup. This is because AWS does
+Note that deploying the backend required some extra setup. This is because AWS does
 not know how to handle a Lerna monorepo, so the easiest way around this is to modify
 the package definitions so that they can be installed with a regular `npm install`.

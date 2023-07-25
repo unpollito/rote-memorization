@@ -13,6 +13,7 @@ export const validateUserController = async (
   }
 
   try {
+    // TODO: all DB calls here should be a single transaction
     const validationData = await db.user.getUserValidationEmailDataByKey(key);
     if (!validationData) {
       return res.status(400).send({ reason: "Key not found" });

@@ -34,3 +34,7 @@
     font-size: 0.6em;
     text-decoration: none;
 }
+
+.review-wrapper--fixed-height {
+    height: 420px;
+}

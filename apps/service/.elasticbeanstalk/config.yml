@@ -1,20 +1,19 @@
 branch-defaults:
   default:
     environment: Rotememorization-env
-    group_suffix: null
-  main:
-    environment: Rotememorization-env
+environment-defaults:
+  Rotememorization-env:
+    branch: null
+    repository: null
 global:
-  application_name: rote-memorization
-  branch: null
+  application_name: Rotememorization
   default_ec2_keyname: null
-  default_platform: Node.js
-  default_region: us-east-1
+  default_platform: Node.js 18 running on 64bit Amazon Linux 2
+  default_region: eu-north-1
   include_git_submodules: true
   instance_profile: null
   platform_name: null
   platform_version: null
   profile: null
-  repository: null
   sc: null
   workspace_type: Application

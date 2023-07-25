@@ -22,6 +22,7 @@ export const registerUserController = async (
     return res.status(400).send("User exists already");
   }
 
+  // TODO: the three calls should really be a single transaction.
   try {
     const user = await createUser({ email, rawPassword });
     await sendValidationEmailToUser(user);
